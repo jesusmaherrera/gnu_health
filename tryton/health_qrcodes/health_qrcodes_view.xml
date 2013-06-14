@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+<!-- PARTY -->
+        <record model="ir.ui.view" id="gnuhealth_patient_view_form">
+            <field name="model">gnuhealth.patient</field>
+            <field name="inherit" ref="health.gnuhealth_patient_view_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="//separator[@id=&quot;separator_misc&quot;]"
+                        position="replace">
+                        <separator colspan="2"
+                            string="Patient Extra Information"
+                            id="separator_misc"/>
+                        <separator colspan="2"
+                            string="QR Code"
+                            id="separator_qr"/>
+
+                    </xpath>
+                    <xpath
+                        expr="//field[@name=&quot;general_info&quot;]"
+                        position="replace">
+                        <field name="general_info" colspan="2"/>
+                        <field name="qr" widget="image"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+<!-- NEWBORN -->
+        <record model="ir.ui.view" id="view_newborn_form">
+            <field name="model">gnuhealth.newborn</field>
+            <field name="inherit" ref="health_pediatrics.gnuhealth_newborn_view"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="//group[@id=&quot;group_newborn_notes&quot;]"
+                        position="after">
+                        <group id="group_qr">
+                            <field name="qr" widget="image"/>
+                        </group>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
